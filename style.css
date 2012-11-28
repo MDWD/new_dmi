@@ -20,4 +20,50 @@ body {
 #content {
 	background: #f2f2f2;
 	border: 5px solid #fff;
+	padding: 5px;
 }
+#content h1 {
+	font-family: 'Open Sans', Arial;
+	font-size: 24px;
+	font-weight: 600;
+	color: #000;
+	border-top: 5px #01207c solid;
+	padding: 5px 0 5px 10px;
+
+}
+#tabs {
+	padding: 5px 0 5px 10px;
+}
+#tabs ul {
+	display: block;
+	margin: 10px 0 0px 10px;
+	float: right;
+}
+#tabs ul li {
+	float: left;
+	margin-right: 5px;
+	padding: 2px 15px;
+	border-top: 1px solid #999;
+	border-left: 1px solid #999;
+	border-right: 1px solid #999;
+
+	-webkit-border-top-left-radius: 10px 100%;
+	-webkit-border-top-right-radius: 10px 100%;
+	-moz-border-radius-topleft: 10px 100%;
+	-moz-border-radius-topright: 10px 100%;
+	border-top-left-radius: 10px 100%;
+	border-top-right-radius: 10px 100%;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { background: #f3f3eb/*{bgColorDefault}*/ }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { background: #DADAD2/*{bgColorActive}*/ }
+
+
+#tabs h2, #tabs h2 a {
+	font-family: 'Open Sans', Arial;
+	font-size: 18px;
+	font-weight: 600;
+	border: none;
+}
+a { border: 0; color: #000; text-decoration: none;}
+a:hover { border: 0; color: #01207c;}
+a:active { color: #01207c;;}

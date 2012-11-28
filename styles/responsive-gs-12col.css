@@ -6,7 +6,9 @@
 */
 
 /* MAIN CONTAINER */
-.container						{ margin: 0 auto; }
+.container { 
+	margin: 0 auto; 
+}
 
 /* SELF CLEARING FLOATS - CLEARFIX METHOD
 ----------------------------------------------------------------------------------------------------*/
@@ -22,23 +24,29 @@
 .row							{ margin-bottom: 20px; } /* set according to preference*/
 								  
 /* DEFAULT COLUMN STYLES */
-.col 							{ display: block;
+.column, .columns				{ display: block;
 								  float:left;
 								  margin-left: 2%; }
 
 /* RESET MARGINS */
-.col:first-child 				{ margin-left: 0; } /* all browsers except IE6 and lower */
+.column:first-child, .columns:first-child 	{ margin-left: 0; } /* all browsers except IE6 and lower */
 
 /* COLUMN WIDTHS*/
-.span_1 						{ width: 6.5%; }
-.span_2 						{ width: 15.0%; }
-.span_3 						{ width: 23.5%; }
-.span_4 						{ width: 32.0%; }
-.span_5 						{ width: 40.5%; }
-.span_6 						{ width: 49.0%; }
-.span_7 						{ width: 57.5%; }
-.span_8 						{ width: 66.0%; }
-.span_9 						{ width: 74.5%; }
-.span_10 						{ width: 83.0%; }
-.span_11 						{ width: 91.5%; }
-.span_12 						{ width: 100%; }
+.one						{ width: 6.5%; }
+.two						{ width: 15.0%; }
+.three						{ width: 23.5%; }
+.four 						{ width: 32.0%; }
+.five						{ width: 40.5%; }
+.six						{ width: 49.0%; }
+.seven						{ width: 57.5%; }
+.eight						{ width: 66.0%; }
+.nine 						{ width: 74.5%; }
+.ten 						{ width: 83.0%; }
+.eleven 					{ width: 91.5%; }
+.twelve						{ width: 100%; }
+
+.row img {
+	width: auto;
+	height: auto;
+	max-width: 100%;
+}
