@@ -1,17 +1,23 @@
+@import url("styles/ie.css");
+@import url("styles/media-queries.css");
+@import url("styles/reset.css");
+@import url("styles/responsive-gs-12col.css");
 
 body {
 	background: #bdcde0;
 }
 
-#wrapper {
+.container {
 	width: 100%;
 	max-width: 960px;
-	margin: 0 auto;
-
 }
 .header {
 
 }
+#logo {
+
+}
 #content {
-	
+	background: #f2f2f2;
+	border: 3px solid #;
 }
