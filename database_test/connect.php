@@ -13,6 +13,6 @@
 		//echo 'connection established';
 	}
 	mysql_select_db($dbname)
-	or die("Unable to select databse: ") . mysql_error());
+	or die("Unable to select databse: ") . mysql_error();
 
  ?>
