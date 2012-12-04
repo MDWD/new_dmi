@@ -15,7 +15,11 @@
 	        $( "#tabs" ).tabs();
 	    });
     </script>
+	<?php 
 
+		$xml = simplexml_load_file("http://www.dmi.dk/dmi/kbh-udsigt.rss");
+		$varsler = simplexml_load_file("http://www.dmi.dk/dmi/varsel.xml");
+	 ?>
 	
 </head>
 <body>
@@ -35,18 +39,27 @@
 						<div style="clear:both;"></div>
 					</ul>
 					<div id="tabs-1">
-						<img src="http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=8305&mode=long">
+						<img src="http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=1000&mode=long">
 					</div>
 					<div id="tabs-2">
 						<img src="http://servlet.dmi.dk/byvejr/servlet/byvejr?by=1000&tabel=dag3_9">
 					</div>
 					
 				</div>
+
+				<h1><?php echo $xml->channel->title; ?></h1>
+				<h2><?php echo $xml->channel->item->title; ?></h2>
+				<p><?php echo $xml->channel->item->description; ?></p>
+				
+
 			</div>
 			<div class="four columns">
 					
-					<h1>Radar</h1>
+				<h1>Radar</h1>
 				<img src="http://www.dmi.dk/dmi/radar-animation640.gif">
+
+				<h1>Aktuelle varsler</h1>
+				<p><?php echo $varsler->channel->item->description; ?></p>
 			
 			</div>
 		</div>
