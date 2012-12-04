@@ -22,33 +22,15 @@
 		$maps = simplexml_load_file("http://maps.googleapis.com/maps/api/geocode/xml?latlng=55.686391,12.5321132&sensor=false");
 	 ?>
 	
+<script src="loadxml.js"></script>
+
 <script>
 
        
 
-      if (navigator.geolocation) {
 
-        navigator.geolocation.getCurrentPosition(getInitialCoordinates, trapError);
 
-        // watch for changes in position
 
-        navigator.geolocation.watchPosition(updateCoordinates);
-
-      } else {
-
-        alert("Error: Your browser doesn't support geolocation.");
-
-      }
-
-       
-
-      function getInitialCoordinates(position) {
-
-document.write("Initial Coordinates:\n" + "latitude = " +  position.coords.latitude + "\nlongiture= " + position.coords.longitude);
-
-      }
-
- 
 
  function updateCoordinates(position) {
 
@@ -64,7 +46,7 @@ document.write("Initial Coordinates:\n" + "latitude = " +  position.coords.latit
 
  }
 
-    </script>
+</script>
 
 
 </head>
@@ -106,7 +88,46 @@ document.write("Initial Coordinates:\n" + "latitude = " +  position.coords.latit
 
 				<h1>Aktuelle varsler</h1>
 				<p><?php echo $varsler->channel->item->description; ?></p>
-				<h1></h1>
+				<h1>
+			
+			<script type="text/javascript">
+
+			      if (navigator.geolocation) {
+
+			        navigator.geolocation.getCurrentPosition(getInitialCoordinates);
+
+			        // watch for changes in position
+
+
+			      } else {
+
+			        alert("Error: Your browser doesn't support geolocation.");
+
+			      }
+
+			       
+
+			      function getInitialCoordinates(position) {
+
+			 			
+
+			 		var base = "http://maps.googleapis.com/maps/api/geocode/xml?latlng=";
+					var latlng = position.coords.latitude + "," + position.coords.longitude;
+					var end = "&sensor=false";	 
+			 		
+			 		//alert(latlng);
+
+			 		//xmlDoc=loadXML(base + latlng + end);
+
+					//zip = xmlDoc.getElementsByTagName("results[0].address_component[7].long_name[0]");
+
+					alert(base + latlng + end);
+			      }
+
+					
+				
+			</script>
+		</h1>
 			
 			</div>
 		</div>
