@@ -88,7 +88,7 @@
 
 				<h1>Aktuelle varsler</h1>
 				<p><?php echo $varsler->channel->item->description; ?></p>
-				<h1>
+				
 			
 			<script type="text/javascript">
 
@@ -127,7 +127,10 @@
 					
 				
 			</script>
-		</h1>
+		<h1 id="someElement"></h1>
+
+
+	
 			
 			</div>
 		</div>
