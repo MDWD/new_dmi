@@ -19,8 +19,54 @@
 
 		$xml = simplexml_load_file("http://www.dmi.dk/dmi/kbh-udsigt.rss");
 		$varsler = simplexml_load_file("http://www.dmi.dk/dmi/varsel.xml");
+		$maps = simplexml_load_file("http://maps.googleapis.com/maps/api/geocode/xml?latlng=55.686391,12.5321132&sensor=false");
 	 ?>
 	
+<script>
+
+       
+
+      if (navigator.geolocation) {
+
+        navigator.geolocation.getCurrentPosition(getInitialCoordinates, trapError);
+
+        // watch for changes in position
+
+        navigator.geolocation.watchPosition(updateCoordinates);
+
+      } else {
+
+        alert("Error: Your browser doesn't support geolocation.");
+
+      }
+
+       
+
+      function getInitialCoordinates(position) {
+
+document.write("Initial Coordinates:\n" + "latitude = " +  position.coords.latitude + "\nlongiture= " + position.coords.longitude);
+
+      }
+
+ 
+
+ function updateCoordinates(position) {
+
+// hanlde coorfinate updates
+
+      }
+
+       
+
+      function trapError() {
+
+          alert("Error: The Geolocation service failed.");
+
+ }
+
+    </script>
+
+
 </head>
 <body>
 	<div class="container">
@@ -39,7 +85,7 @@
 						<div style="clear:both;"></div>
 					</ul>
 					<div id="tabs-1">
-						<img src="http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=1000&mode=long">
+						<img src="http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=<?php echo $maps->result->address_component[7]->long_name; ?>&mode=long">
 					</div>
 					<div id="tabs-2">
 						<img src="http://servlet.dmi.dk/byvejr/servlet/byvejr?by=1000&tabel=dag3_9">
@@ -60,6 +106,7 @@
 
 				<h1>Aktuelle varsler</h1>
 				<p><?php echo $varsler->channel->item->description; ?></p>
+				<h1></h1>
 			
 			</div>
 		</div>
