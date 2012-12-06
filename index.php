@@ -18,7 +18,7 @@
 	<?php 
 		$xml = simplexml_load_file("http://www.dmi.dk/dmi/kbh-udsigt.rss");
 		$varsler = simplexml_load_file("http://www.dmi.dk/dmi/varsel.xml");
-		$maps = simplexml_load_file("http://maps.googleapis.com/maps/api/geocode/xml?latlng=55.686391,12.5321132&sensor=false");
+		$maps = simplexml_load_file("http://maps.googleapis.com/maps/api/geocode/xml?latlng=55.675649,12.528508&sensor=false");
 	 ?>
 </head>
 <body>
@@ -29,7 +29,9 @@
 		<div id="content" class="row">
 			<div class="border">
 				<div class="eight columns">
-					<h1>Vejret nu og her</h1>
+					<div id="udsigt">
+						<h1><?php echo $xml->channel->title; ?></h1>
+					</div>
 					<div id="tabs">
 						<ul>
 							<li><a href="#tabs-1"><h2>Time for time</h2></a></li>
@@ -43,10 +45,25 @@
 							<img src="http://servlet.dmi.dk/byvejr/servlet/byvejr?by=1000&tabel=dag3_9">
 						</div>			
 					</div>
-					<div id="udsigt">
-						<h1><?php echo $xml->channel->title; ?></h1>
-						<h2><?php echo $xml->channel->item->title; ?></h2>
-						<p><?php echo $xml->channel->item->description; ?></p>
+					<h2><?php echo $xml->channel->item->title; ?></h2>
+					<p style="height: 32px; overflow: hidden;"><?php echo $xml->channel->item->description; ?></p>
+					<div id="links">
+						<ul class="six columns">
+							<li><a href="#"><img src="images/vejrkort.png">Verdenskort</a></li>
+							<li><a href="#"><img src="images/Verden.png">Verdensvejr</a></li>
+							<li><a href="#"><img src="images/Til-lands.png">Til Lands</a></li>
+							<li><a href="#"><img src="images/til-sos.png">Til Søs</a></li>
+							<li><a href="#"><img src="images/i-luften.png">I Luften</a></li>
+							<li><a href="#"><img src="images/sundhedsvejr.png">Sundhedsvejr</a></li>
+						</ul>
+						<ul class="six columns">
+							<li><a href="#"><img src="images/Tjenester.png">Tjenester</a></li>
+							<li><a href="#"><img src="images/malinger.png">Målinger</a></li>
+							<li><a href="#"><img src="images/viden.png">Viden</a></li>
+							<li><a href="#"><img src="images/klima.png">Klima</a></li>
+							<li><a href="#"><img src="images/Vejrarkiver.png">Arkiver</a></li>
+							<li><a href="#"><img src="images/om-DMI.png">Om DMI</a></li>
+						</ul>
 					</div>
 				</div>
 				<div class="four columns">
