@@ -80,35 +80,7 @@
 					<p><?php echo $xml->channel->item->description; ?></p>
 				</div>
 
-				<h1>Beskriv vejret nær dig!</h1>
-				<form>
-					<ul>
-					<li><input type="text" size=40 name="comment_by" /></li>
-					<li><textarea name="comment" cols=30></textarea></li>
-					<li class="buttons"><input type="submit" value="Submit" /></li>
-					</ul>
-				</form>
-				<?php
-					/* U need to change below fields */
-					$db_sitename="lokal_vejr";
-					$db_hostname="localhost";
-					$db_username="root";
-					$db_password="root";
-					$no_of_comments="12";
-					 
-					/* Leave the script below as it is */
-					mysql_connect($db_hostname, $db_username, $db_password);
-					mysql_select_db($db_sitename);
-					$pagename=md5($_SERVER['PHP_SELF']);
-					$query=mysql_query("Select * from comments where comment_on='$pagename' ORDER BY id DESC LIMIT 0, $no_of_comments");
-					echo "<hr />";
-					 
-					echo "<h3>Latest Comments</h3>";
-					while($fetch=mysql_fetch_array($query)) {
-					echo "<p>".$fetch['comment']."<br/><sub><b>Comment by: </b>".$fetch['comment_by']."</sub><hr /><p>";
-					}
-					mysql_close();
-				?>
+				
 			</div>
 			<div class="four columns">
 					
@@ -118,6 +90,36 @@
 				<h1>Aktuelle varsler</h1>
 				<img src="http://www.dmi.dk/dmi/danmark/regionaludsigten/varsel_oversigt.png" />
 				
+				<h1>Beskriv vejret nær dig!</h1>
+				<form action="post_comment.php" method="post">
+					<ul>
+						<li style="opacity: 0;"><input type="text" name="comment_on" size=40 readonly="readonly" value="<?php print md5($_SERVER['PHP_SELF']); ?>" /></li>
+						<li><input type="text" size=40 name="comment_by" placeholder="Navn" /></li>
+						<li><textarea name="comment" cols=30 placeholder="Din beskrivelse"></textarea></li>
+						<li class="buttons"><input type="submit" value="Indsend" /></li>
+					</ul>
+				</form>
+				<?php
+					/* U need to change below fields */
+					$db_sitename="lokal_vejr";
+					$db_hostname="localhost";
+					$db_username="root";
+					$db_password="root";
+					$no_of_comments="6";
+					 
+					/* Leave the script below as it is */
+					mysql_connect($db_hostname, $db_username, $db_password);
+					mysql_select_db($db_sitename);
+					$pagename=md5($_SERVER['PHP_SELF']);
+					$query=mysql_query("Select * from comments where comment_on='$pagename' ORDER BY id DESC LIMIT 0, $no_of_comments");
+					
+					 
+					echo "<h3>Seneste vejrbeskrivelser</h3>";
+					while($fetch=mysql_fetch_array($query)) {
+					echo "<p>".$fetch['comment']."<br/><sub><b>Comment by: </b>".$fetch['comment_by']."</sub><hr /><p>";
+					}
+					mysql_close();
+				?>
 			
 			<script type="text/javascript">
 
