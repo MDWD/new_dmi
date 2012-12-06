@@ -90,11 +90,11 @@
 				</form>
 				<?php
 					/* U need to change below fields */
-					$db_sitename="sitename/database name in which u created tables";
-					$db_hostname="address of database (For Example: localhost)";
-					$db_username="username to access database";
-					$db_password="password of database";
-					$no_of_comments="Number Of comments u want to show on page";
+					$db_sitename="lokal_vejr";
+					$db_hostname="localhost";
+					$db_username="root";
+					$db_password="root";
+					$no_of_comments="12";
 					 
 					/* Leave the script below as it is */
 					mysql_connect($db_hostname, $db_username, $db_password);
