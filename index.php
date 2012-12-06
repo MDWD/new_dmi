@@ -16,47 +16,16 @@
 	    });
     </script>
 	<?php 
-
 		$xml = simplexml_load_file("http://www.dmi.dk/dmi/kbh-udsigt.rss");
 		$varsler = simplexml_load_file("http://www.dmi.dk/dmi/varsel.xml");
 		$maps = simplexml_load_file("http://maps.googleapis.com/maps/api/geocode/xml?latlng=55.686391,12.5321132&sensor=false");
 	 ?>
-	
-<script src="loadxml.js"></script>
-
-<script>
-
-       
-
-
-
-
-
- function updateCoordinates(position) {
-
-// hanlde coorfinate updates
-
-      }
-
-       
-
-      function trapError() {
-
-          alert("Error: The Geolocation service failed.");
-
- }
-
-</script>
-
-
 </head>
 <body>
-	<div class="container">
-		
+	<div class="container">	
 		<div class="header">
 			<div id="logo"><img src="http://www.dmi.dk/dmi/dmi-logo.gif" alt="DMI"></div>
 		</div>
-
 		<div id="content" class="row">
 			<div class="border">
 				<div class="eight columns">
@@ -72,16 +41,13 @@
 						</div>
 						<div id="tabs-2">
 							<img src="http://servlet.dmi.dk/byvejr/servlet/byvejr?by=1000&tabel=dag3_9">
-						</div>
-						
+						</div>			
 					</div>
 					<div id="udsigt">
 						<h1><?php echo $xml->channel->title; ?></h1>
 						<h2><?php echo $xml->channel->item->title; ?></h2>
 						<p><?php echo $xml->channel->item->description; ?></p>
 					</div>
-
-					
 				</div>
 				<div class="four columns">
 						
@@ -101,70 +67,33 @@
 						</ul>
 					</form>
 					<?php
-						/* U need to change below fields */
 						include 'dbinfo.php';
-						 
-						/* Leave the script below as it is */
 						mysql_connect($db_hostname, $db_username, $db_password);
 						mysql_select_db($db_sitename);
 						$pagename=md5($_SERVER['PHP_SELF']);
 						$query=mysql_query("Select * from comments where comment_on='$pagename' ORDER BY id DESC LIMIT 0, $no_of_comments");
-						
-						 
 						echo "<h3>Seneste vejrbeskrivelser</h3>";
 						while($fetch=mysql_fetch_array($query)) {
 						echo "<p>".$fetch['comment']."<br/><sub><b>Comment by: </b>".$fetch['comment_by']."</sub><hr /><p>";
 						}
 						mysql_close();
 					?>
-				
-				<script type="text/javascript">
-
-				      if (navigator.geolocation) {
-
-				        navigator.geolocation.getCurrentPosition(getInitialCoordinates);
-
-				        // watch for changes in position
-
-
-				      } else {
-
-				        alert("Error: Your browser doesn't support geolocation.");
-
-				      }
-
-				       
-
-				      function getInitialCoordinates(position) {
-
-				 			
-
-				 		var base = "http://maps.googleapis.com/maps/api/geocode/json?latlng=";
-						var latlng = position.coords.latitude + "," + position.coords.longitude;
-						var end = "&sensor=false";	 
-				 		
-				 		//alert(latlng);
-
-				 		//xmlDoc=loadXML(base + latlng + end);
-
-						//zip = xmlDoc.getElementsByTagName("results[0].address_component[7].long_name[0]");
-
-						//alert(base + latlng + end);
-				      }
-
-						
-					
-				</script>
-
-
-		
-				
 				</div>
 				<div style="clear:both;"></div>
 			</div>
 		</div>
-
 	</div>
-
+	<script type="text/javascript">
+		if (navigator.geolocation) {
+	        	navigator.geolocation.getCurrentPosition(getInitialCoordinates);
+	        } else {
+		        alert("Error: Your browser doesn't support geolocation.");
+	    	}				    
+		    function getInitialCoordinates(position) {			 			
+		 		var base = "http://maps.googleapis.com/maps/api/geocode/json?latlng=";
+				var latlng = position.coords.latitude + "," + position.coords.longitude;
+				var end = "&sensor=false";	 
+			}				
+	</script>
 </body>
 </html>
