@@ -6,7 +6,7 @@
 body {
 	background: #bdcde0;
 	font-family: 'Open Sans', Arial;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 .container {
@@ -42,6 +42,7 @@ body {
 
 #content p {
 	margin-bottom: 10px;
+	font-size: 12px;
 }
 
 #tabs {
