@@ -53,9 +53,9 @@
 <body>
 	<div class="container">
 		
-		<div class="header">
+		<heading class="header">
 			<div id="logo"><img src="http://www.dmi.dk/dmi/dmi-logo.gif" alt="DMI"></div>
-		</div>
+		</heading>
 
 		<div id="content" class="row">
 			<div class="border">
@@ -102,7 +102,11 @@
 					</form>
 					<?php
 						/* U need to change below fields */
-						include 'dbinfo.php';
+						$db_sitename="lokal_vejr";
+						$db_hostname="localhost";
+						$db_username="root";
+						$db_password="root";
+						$no_of_comments="6";
 						 
 						/* Leave the script below as it is */
 						mysql_connect($db_hostname, $db_username, $db_password);
@@ -160,7 +164,7 @@
 		
 				
 				</div>
-				<div style="clear:both;"></div>
+		
 			</div>
 		</div>
 
