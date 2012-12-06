@@ -12,3 +12,4 @@ xhttp.open("GET",dname,false);
 xhttp.send();
 return xhttp.responseXML;
 }
+function 
