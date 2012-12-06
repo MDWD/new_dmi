@@ -80,6 +80,15 @@
 				<p><?php echo $xml->channel->item->description; ?></p>
 				
 
+				<h1>Beskriv vejret nær dig!</h1>
+				<form>
+					<ul>
+					<li><input type="text" class="input-text" name="name" id="name" placeholder="Navn" value="" class="requiredField" /></li>
+					<li><textarea name="comments" id="commentsText" rows="20" cols="30" class="requiredField" placeholder="Din beskrivelse">tekst</textarea></li>
+					<li class="buttons"><input type="hidden" name="submitted" id="submitted" value="true" /><button type="submit">Send</button></li>
+					</ul>
+				</form>
+
 			</div>
 			<div class="four columns">
 					
@@ -111,7 +120,7 @@
 
 			 			
 
-			 		var base = "http://maps.googleapis.com/maps/api/geocode/xml?latlng=";
+			 		var base = "http://maps.googleapis.com/maps/api/geocode/json?latlng=";
 					var latlng = position.coords.latitude + "," + position.coords.longitude;
 					var end = "&sensor=false";	 
 			 		
@@ -121,13 +130,12 @@
 
 					//zip = xmlDoc.getElementsByTagName("results[0].address_component[7].long_name[0]");
 
-					alert(base + latlng + end);
+					//alert(base + latlng + end);
 			      }
 
 					
 				
 			</script>
-		<h1 id="someElement"></h1>
 
 
 	
