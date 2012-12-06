@@ -74,21 +74,41 @@
 					</div>
 					
 				</div>
-
-				<h1><?php echo $xml->channel->title; ?></h1>
-				<h2><?php echo $xml->channel->item->title; ?></h2>
-				<p><?php echo $xml->channel->item->description; ?></p>
-				
+				<div id="udsigt">
+					<h1><?php echo $xml->channel->title; ?></h1>
+					<h2><?php echo $xml->channel->item->title; ?></h2>
+					<p><?php echo $xml->channel->item->description; ?></p>
+				</div>
 
 				<h1>Beskriv vejret nær dig!</h1>
 				<form>
 					<ul>
-					<li><input type="text" class="input-text" name="name" id="name" placeholder="Navn" value="" class="requiredField" /></li>
-					<li><textarea name="comments" id="commentsText" rows="20" cols="30" class="requiredField" placeholder="Din beskrivelse">tekst</textarea></li>
-					<li class="buttons"><input type="hidden" name="submitted" id="submitted" value="true" /><button type="submit">Send</button></li>
+					<li><input type="text" size=40 name="comment_by" /></li>
+					<li><textarea name="comment" cols=30></textarea></li>
+					<li class="buttons"><input type="submit" value="Submit" /></li>
 					</ul>
 				</form>
-
+				<?php
+					/* U need to change below fields */
+					$db_sitename="sitename/database name in which u created tables";
+					$db_hostname="address of database (For Example: localhost)";
+					$db_username="username to access database";
+					$db_password="password of database";
+					$no_of_comments="Number Of comments u want to show on page";
+					 
+					/* Leave the script below as it is */
+					mysql_connect($db_hostname, $db_username, $db_password);
+					mysql_select_db($db_sitename);
+					$pagename=md5($_SERVER['PHP_SELF']);
+					$query=mysql_query("Select * from comments where comment_on='$pagename' ORDER BY id DESC LIMIT 0, $no_of_comments");
+					echo "<hr />";
+					 
+					echo "<h3>Latest Comments</h3>";
+					while($fetch=mysql_fetch_array($query)) {
+					echo "<p>".$fetch['comment']."<br/><sub><b>Comment by: </b>".$fetch['comment_by']."</sub><hr /><p>";
+					}
+					mysql_close();
+				?>
 			</div>
 			<div class="four columns">
 					
@@ -96,7 +116,7 @@
 				<img src="http://www.dmi.dk/dmi/radar-animation640.gif">
 
 				<h1>Aktuelle varsler</h1>
-				<p><?php echo $varsler->channel->item->description; ?></p>
+				<img src="http://www.dmi.dk/dmi/danmark/regionaludsigten/varsel_oversigt.png" />
 				
 			
 			<script type="text/javascript">

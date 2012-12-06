@@ -5,6 +5,8 @@
 
 body {
 	background: #bdcde0;
+	font-family: 'Open Sans', Arial;
+	font-size: 12px;
 }
 
 .container {
@@ -24,14 +26,24 @@ body {
 	padding: 5px;
 }
 #content h1 {
-	font-family: 'Open Sans', Arial;
 	font-size: 24px;
 	font-weight: 600;
 	color: #000;
 	border-top: 5px #01207c solid;
+
+}
+#content #udsigt h2 {
+	font-style: italic;
+}
+#content h1, #content h2, #content p, form {
 	padding: 5px 0 5px 10px;
 
 }
+
+#content p {
+	margin-bottom: 10px;
+}
+
 #tabs {
 	padding: 5px 0 5px 10px;
 }
@@ -75,7 +87,7 @@ input {
 textarea { border: 1px solid #000;}
 
 /* Mobile */
-	@media only screen and (max-width: 767px) {		
+	@media only screen and (max-width: 670px) {		
 		body { -webkit-text-size-adjust: none; -ms-text-size-adjust: none; width: 100%; min-width: 0; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
 		.container { min-width: 0; margin-left: 0; margin-right: 0; }
 		.row { width: 100%; min-width: 0; margin-left: 0; margin-right: 0; }

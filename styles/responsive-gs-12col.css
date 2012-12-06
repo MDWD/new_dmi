@@ -26,7 +26,9 @@
 /* DEFAULT COLUMN STYLES */
 .column, .columns				{ display: block;
 								  float:left;
-								  margin-left: 2%; }
+								  margin-left: 2%; 
+								  
+								}
 
 /* RESET MARGINS */
 .column:first-child, .columns:first-child 	{ margin-left: 0; } /* all browsers except IE6 and lower */
