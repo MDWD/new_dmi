@@ -120,10 +120,15 @@
 				var latlng = position.coords.latitude + "," + position.coords.longitude;
 				var end = "&sensor=false";	
 				var xmlhttp = new XMLHttpRequest(); 
-				
-				
-				var hej = new XMLHttpRequest(); 
-				alert(hej.open("GET", proxybase + base + latlng + end, true));
+				if (window.XMLHttpRequest)
+					  {// code for IE7+, Firefox, Chrome, Opera, Safari
+					  xmlhttp=new XMLHttpRequest();
+					  }
+					else
+					  {// code for IE6, IE5
+					  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+					  }
+				alert(xmlhttp.open("GET", "localhost/new_dmi/proxy.php?proxy_url=http://maps.googleapis.com/maps/api/geocode/xml?latlng=55.675649,12.528508&sensor=false", false));
 			}				
 
 	</script>
