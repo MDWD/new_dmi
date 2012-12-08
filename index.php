@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600,700' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>	
     <script src="loadxml.js"></script>
 
     <script>
@@ -114,28 +114,36 @@
 	        	navigator.geolocation.getCurrentPosition(getInitialCoordinates);
 	        } else {
 		        alert("Error: Your browser doesn't support geolocation.");
-	    	}				    
+	    	}	
+
+	    	function loadXML(dname)
+			{
+				if (window.XMLHttpRequest)
+				  {
+				  xhttp=new XMLHttpRequest();
+				  }
+				else
+				  {
+				  xhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				  }
+				xhttp.open("GET",dname,false);
+				xhttp.send();
+				return xhttp.responseXML;
+}			    
 		    function getInitialCoordinates(position) {	
-		    	var proxybase = "localhost/proxy.php?proxy_url="		 			
+
+		    /*	var proxybase = "localhost/proxy.php?proxy_url="		 			
 		 		var base = "http://maps.googleapis.com/maps/api/geocode/xml?latlng=";
 				var latlng = position.coords.latitude + "," + position.coords.longitude;
-				var end = "&sensor=false";	
-				var xmlhttp = new XMLHttpRequest(); 
-				if (window.XMLHttpRequest)
-					  {// code for IE7+, Firefox, Chrome, Opera, Safari
-					  xmlhttp=new XMLHttpRequest();
-					  }
-					else
-					  {// code for IE6, IE5
-					  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-					  }
+				var end = "&sensor=false";	*/
 
 
-				xmlhttp.open("GET", "localhost/new_dmi/proxy.php?proxy_url=http://maps.googleapis.com/maps/api/geocode/xml?latlng=55.675649,12.528508&sensor=false", false);
-
-				xmlDoc = xmlhttp.responseXML;
 				
-				alert(xmlDoc.getElementsByTagName("results.address_component[7].long_name"));
+				loadXML("proxy.php?proxy_url=http://maps.googleapis.com/maps/api/geocode/xml?latlng=55.675649,12.528508&sensor=false");
+				
+			
+				alert(loadXML.responseXML.getElementsByTagName("result[0].address_component[7].long_name[0]"));
+	
 			
 			}				
 

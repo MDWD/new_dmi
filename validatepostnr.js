@@ -24,7 +24,3 @@
 	if (x > 9999) form.by.value = "1000";
   }
 </script>
-
-// <form onsubmit="validatePostnum(this)" action="index/danmark/byvejr_danmark.htm" class="broedtekst">
-// Indtast postnummer <input type="text" class="broedtekst" name="by" id="by" size="8">
-// </form>
