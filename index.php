@@ -133,7 +133,7 @@
 
 				xmlhttp.open("GET", "localhost/new_dmi/proxy.php?proxy_url=http://maps.googleapis.com/maps/api/geocode/xml?latlng=55.675649,12.528508&sensor=false", false);
 
-				xmlDoc=xmlhttp.responseXML;
+				xmlDoc = xmlhttp.responseXML;
 				
 				alert(xmlDoc.getElementsByTagName("results.address_component[7].long_name"));
 			
