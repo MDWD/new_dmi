@@ -114,11 +114,18 @@
 	        } else {
 		        alert("Error: Your browser doesn't support geolocation.");
 	    	}				    
-		    function getInitialCoordinates(position) {			 			
-		 		var base = "http://maps.googleapis.com/maps/api/geocode/json?latlng=";
+		    function getInitialCoordinates(position) {	
+		    	var proxybase = "localhost/proxy.php?proxy_url="		 			
+		 		var base = "http://maps.googleapis.com/maps/api/geocode/xml?latlng=";
 				var latlng = position.coords.latitude + "," + position.coords.longitude;
-				var end = "&sensor=false";	 
+				var end = "&sensor=false";	
+				var xmlhttp = new XMLHttpRequest(); 
+				
+				
+				var hej = new XMLHttpRequest(); 
+				alert(hej.open("GET", proxybase + base + latlng + end, true));
 			}				
+
 	</script>
 </body>
 </html>
