@@ -21,31 +21,31 @@
   								  visibility: hidden; }
 
 /* DEFAULT ROW STYLES */
-.row							{ margin-bottom: 20px; } /* set according to preference*/
+.row { margin-bottom: 20px; } /* set according to preference*/
 								  
 /* DEFAULT COLUMN STYLES */
-.column, .columns				{ display: block;
-								  float:left;
-								  margin-left: 2%; 
-								  
-								}
+.column, .columns { 
+	display: block;
+	float:left;
+	margin-left: 2%; 								  
+}
 
 /* RESET MARGINS */
 .column:first-child, .columns:first-child 	{ margin-left: 0; } /* all browsers except IE6 and lower */
 
 /* COLUMN WIDTHS*/
-.one						{ width: 6.5%; }
-.two						{ width: 15.0%; }
-.three						{ width: 23.5%; }
-.four 						{ width: 32.0%; }
-.five						{ width: 40.5%; }
-.six						{ width: 49.0%; }
-.seven						{ width: 57.5%; }
-.eight						{ width: 66.0%; }
-.nine 						{ width: 74.5%; }
-.ten 						{ width: 83.0%; }
-.eleven 					{ width: 91.5%; }
-.twelve						{ width: 100%; }
+.one { width: 6.5%; }
+.two { width: 15.0%; }
+.three { width: 23.5%; }
+.four { width: 32.0%; }
+.five { width: 40.5%; }
+.six { width: 49.0%; }
+.seven { width: 57.5%; }
+.eight { width: 66.0%; }
+.nine { width: 74.5%; }
+.ten { width: 83.0%; }
+.eleven { width: 91.5%; }
+.twelve { width: 100%; }
 
 .row img {
 	width: auto;

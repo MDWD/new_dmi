@@ -7,7 +7,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600,700' rel='stylesheet' type='text/css'>
-    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 
     <script>
@@ -45,9 +45,17 @@
 							<img src="http://servlet.dmi.dk/byvejr/servlet/byvejr?by=1000&tabel=dag3_9">
 						</div>			
 					</div>
-					<h2><?php echo $xml->channel->item->title; ?></h2>
-					<p style="height: 32px; overflow: hidden;"><?php echo $xml->channel->item->description; ?></p>
-					<div id="links">
+					<div class="description eight columns">
+						<h2><?php echo $xml->channel->item->title; ?></h2>
+						<p style="height: 32px; overflow: hidden;"><?php echo $xml->channel->item->description; ?></p>
+					</div>
+					<div class="three columns">
+						<form>
+							<input type="text" size="40" placeholder="Anden by" />
+						</form>
+
+					</div>
+					<div id="links" style="clear: both;">
 						<ul class="six columns">
 							<li><a href="#"><img src="images/vejrkort.png">Verdenskort</a></li>
 							<li><a href="#"><img src="images/Verden.png">Verdensvejr</a></li>
@@ -91,7 +99,7 @@
 						$query=mysql_query("Select * from comments where comment_on='$pagename' ORDER BY id DESC LIMIT 0, $no_of_comments");
 						echo "<h3>Seneste vejrbeskrivelser</h3>";
 						while($fetch=mysql_fetch_array($query)) {
-						echo "<p>".$fetch['comment']."<br/><sub><b>Comment by: </b>".$fetch['comment_by']."</sub><hr /><p>";
+						echo "<p>".$fetch['comment']."<br/><sub><b>Skrevet af: </b>".$fetch['comment_by']."</sub><hr /><p>";
 						}
 						mysql_close();
 					?>
