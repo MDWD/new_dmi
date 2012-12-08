@@ -9,6 +9,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600,700' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script src="loadxml.js"></script>
 
     <script>
 	    $(function() {
@@ -128,7 +129,14 @@
 					  {// code for IE6, IE5
 					  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 					  }
-				alert(xmlhttp.open("GET", "localhost/new_dmi/proxy.php?proxy_url=http://maps.googleapis.com/maps/api/geocode/xml?latlng=55.675649,12.528508&sensor=false", false));
+
+
+				xmlhttp.open("GET", "localhost/new_dmi/proxy.php?proxy_url=http://maps.googleapis.com/maps/api/geocode/xml?latlng=55.675649,12.528508&sensor=false", false);
+
+				xmlDoc=xmlhttp.responseXML;
+				
+				alert(xmlDoc.getElementsByTagName("results.address_component[7].long_name"));
+			
 			}				
 
 	</script>
