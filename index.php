@@ -80,7 +80,7 @@
 					<img src="http://www.dmi.dk/dmi/radar-animation640.gif">
 
 					<h1>Aktuelle varsler</h1>
-					<img src="http://www.dmi.dk/dmi/danmark/regionaludsigten/varsel_oversigt.png" />
+					<p><img src="http://www.dmi.dk/dmi/danmark/regionaludsigten/varsel_oversigt.png" /></p>
 					
 					<h1>Beskriv vejret nær dig!</h1>
 					<form action="post_comment.php" method="post">
