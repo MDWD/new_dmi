@@ -30,9 +30,7 @@
 		<div id="content" class="row">
 			<div class="border">
 				<div class="eight columns">
-					<div id="udsigt">
-						<h1><?php echo $xml->channel->title; ?></h1>
-					</div>
+					<h1>Vejrudsigten nær dig!</h1>
 					<div id="tabs">
 						<ul>
 							<li><a href="#tabs-1"><h2>Time for time</h2></a></li>
@@ -47,6 +45,9 @@
 						</div>			
 					</div>
 					<div class="description eight columns">
+						<div id="udsigt">
+							<h1><?php echo $xml->channel->title; ?></h1>
+						</div>
 						<h2><?php echo $xml->channel->item->title; ?></h2>
 						<p style="height: 32px; overflow: hidden;"><?php echo $xml->channel->item->description; ?></p>
 					</div>
