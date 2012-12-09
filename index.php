@@ -10,7 +10,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>	
     <script src="loadxml.js"></script>
-
     <script>
 	    $(function() {
 	        $( "#tabs" ).tabs();
@@ -19,7 +18,7 @@
 	<?php 
 		$xml = simplexml_load_file("http://www.dmi.dk/dmi/kbh-udsigt.rss");
 		$varsler = simplexml_load_file("http://www.dmi.dk/dmi/varsel.xml");
-		$maps = simplexml_load_file("http://maps.googleapis.com/maps/api/geocode/xml?latlng=55.675649,12.528508&sensor=false");
+		$maps = simplexml_load_file("http://maps.googleapis.com/maps/api/geocode/xml?latlng=55.675649,12.528508&sensor=false");							
 	 ?>
 </head>
 <body>
@@ -88,8 +87,8 @@
 					<form action="post_comment.php" method="post">
 						<ul>
 							<li style="position: absolute; left: -9999999px;"><input type="text" name="comment_on" size=40 readonly="readonly" value="<?php print md5($_SERVER['PHP_SELF']); ?>" /></li>
-							<li><input type="text" size=40 name="comment_by" placeholder="Navn" /></li>
-							<li><textarea name="comment" cols=30 placeholder="Din beskrivelse"></textarea></li>
+							<li><input type="text" size=40 name="comment_by" placeholder="Navn" required="required"/></li>
+							<li><textarea name="comment" cols=30 placeholder="Din beskrivelse" required="required"></textarea></li>
 							<li class="buttons"><input type="submit" value="Indsend" /></li>
 						</ul>
 					</form>
@@ -140,10 +139,10 @@
 
 
 				
-				loadXML("proxy.php?proxy_url=http://maps.googleapis.com/maps/api/geocode/xml?latlng=55.675649,12.528508&sensor=false");
+				var xmlresp = loadXML("proxy.php?proxy_url=http://maps.googleapis.com/maps/api/geocode/xml?latlng=55.675649,12.528508&sensor=false");
 				
 			
-				alert(loadXML.responseXML.getElementsByTagName("result[0].address_component[7].long_name[0]"));
+				alert(xmlresp.getElementsByTagName("result[0].address_component[7].long_name[0]"));
 	
 			
 			}				
