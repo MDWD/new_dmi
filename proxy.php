@@ -1,24 +1,34 @@
 <?php
-require_once("class_http.php");
-$proxy_url = isset($_GET['proxy_url'])?$_GET['proxy_url']:false;
-if (!$proxy_url) {
-    header("HTTP/1.0 400 Bad Request");
-    echo "proxy.php failed because proxy_url parameter is missing";
-    exit();
+$path = ($_POST['path']) ? $_POST['path'] : $_GET['path'];
+$url = $path;
+ 
+// Open the Curl session
+$session = curl_init($url);
+ 
+// If it's a POST, put the POST data in the body
+if ($_POST['path']) {
+	$postvars = '';
+	while ($element = current($_POST)) {
+		$postvars .= urlencode(key($_POST)).'='.urlencode($element).'&';
+		next($_POST);
+	}
+	curl_setopt ($session, CURLOPT_POST, true);
+	curl_setopt ($session, CURLOPT_POSTFIELDS, $postvars);
 }
-if (!$h = new http()) {
-    header("HTTP/1.0 501 Script Error");
-    echo "proxy.php failed trying to initialize the http object";
-    exit();
-}
-$h->url = $proxy_url;
-$h->postvars = $_POST;
-if (!$h->fetch($h->url)) {
-    header("HTTP/1.0 501 Script Error");
-    echo "proxy.php had an error attempting to query the url";
-    exit();
-}
-$ary_headers = split("\n", $h->header);
-foreach($ary_headers as $hdr) { header($hdr); }
-echo $h->body;
+ 
+// Don't return HTTP headers. Do return the contents of the call
+curl_setopt($session, CURLOPT_HEADER, false);
+curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+ 
+// Make the call
+$xml = curl_exec($session);
+ 
+// does the service return XML or JSON? Set the Content-Type appropriately
+$headerType = ($_POST['type']) ? $_POST['type'] : $_GET['type'];
+// 'text/xml' or 'application/json'
+$headerType = ($headerType) ? $headerType : 'text/xml';//default
+header("Content-Type: " . $headerType);
+ 
+echo $xml;
+curl_close($session);
 ?>
