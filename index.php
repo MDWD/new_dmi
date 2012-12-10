@@ -188,43 +188,6 @@ $(function(){
 			</div>
 		</div>
 	</div>
-<<<<<<< HEAD
-	<script type="text/javascript">
-		if (navigator.geolocation) {
-	        	navigator.geolocation.getCurrentPosition(getInitialCoordinates);
-	        } else {
-		        alert("Error: Your browser doesn't support geolocation.");
-	    	}	
-
-	    	function loadXML(dname)
-			{
-				if (window.XMLHttpRequest)
-				  {
-				  xhttp=new XMLHttpRequest();
-				  }
-				else
-				  {
-				  xhttp=new ActiveXObject("Microsoft.XMLHTTP");
-				  }
-				xhttp.open("GET",dname,false);
-				xhttp.send();
-				return xhttp.responseXML;
-}			    
-		    function getInitialCoordinates(position) {	
-
-		    /*	var proxybase = "localhost/proxy.php?proxy_url="		 			
-		 		var base = "http://maps.googleapis.com/maps/api/geocode/xml?latlng=";
-				var latlng = position.coords.latitude + "," + position.coords.longitude;
-				var end = "&sensor=false";	*/
-
-
-				
-				var xmlresp = loadXML("proxy.php?proxy_url=http://maps.googleapis.com/maps/api/geocode/xml?latlng=55.675649,12.528508&sensor=false");
-				
-			
-				alert(xmlresp.getElementsByTagName("result[0].address_component[7].long_name[0]"));
-=======
->>>>>>> asdasd
 	
 		 
 
