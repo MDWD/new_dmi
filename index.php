@@ -152,9 +152,7 @@ $(function(){
 						</div>
 					</div>
 					<div class="three columns">
-						<form>
-							<input type="text" size="40" placeholder="Anden by" />
-						</form>
+						
 
 					</div>
 					<div id="links" style="clear: both;">
