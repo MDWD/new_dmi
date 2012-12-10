@@ -74,10 +74,35 @@ $(function(){
             var found = false;
             $(json.results[0].address_components).each(function(i, el){
                if($.inArray("postal_code", el.types) > -1){
-                  $("#3-9").attr('src', 'http://servlet.dmi.dk/byvejr/servlet/byvejr?by=' + el.short_name + '&tabel=dag3_9');
-                  $("#3").attr('src', 'http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=' + el.short_name + '&mode=long');
-                  found = true;
-                  return;
+
+				var zip = el.short_name;
+
+				if (zip < 1800) zip = "1000";
+				else
+				if (zip < 2000) zip = "2000";
+				else
+				if (zip > 2000 && zip < 2500) zip = "1000";
+				else
+				if (zip > 5000 && zip < 5280) zip = "5000";
+				else
+				if (zip > 6000 && zip < 6020) zip = "6000";
+				else
+				if (zip > 6700 && zip < 6720) zip = "6700";
+				else
+				if (zip > 7100 && zip < 7130) zip = "7100";
+				else
+				if (zip > 8000 && zip < 8220) zip = "8000";
+				else
+				if (zip == 8920 || zip == 8930 || zip == 8940 || zip == 8960) zip = "8900";
+				else
+				if (zip > 9000 && zip < 9230) zip = "9000";
+				else
+				if (zip > 9999) zip = "1000";
+
+                $("#3-9").attr('src', 'http://servlet.dmi.dk/byvejr/servlet/byvejr?by=' + zip + '&tabel=dag3_9');
+                $("#3").attr('src', 'http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=' + zip + '&mode=long');
+                found = true;
+                return;
                }
             });
             if(!found){
