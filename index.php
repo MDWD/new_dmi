@@ -23,6 +23,7 @@
 
 
 <script type="text/javascript">
+
 $(function(){
    var GETZIP = {
       getLocation: function(){
@@ -58,7 +59,7 @@ $(function(){
          }
  
       },
- 
+ 		
       getZipCode: function(position){
          var position = position.coords.latitude + "," + position.coords.longitude;
          $.getJSON('proxy.php',{
@@ -73,7 +74,8 @@ $(function(){
             var found = false;
             $(json.results[0].address_components).each(function(i, el){
                if($.inArray("postal_code", el.types) > -1){
-                  $("#status").text('Your Zip Code: ' + el.short_name);
+                  $("#3-9").attr('src', 'http://servlet.dmi.dk/byvejr/servlet/byvejr?by=' + el.short_name + '&tabel=dag3_9');
+                  $("#3").attr('src', 'http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=' + el.short_name + '&mode=long');
                   found = true;
                   return;
                }
@@ -92,6 +94,8 @@ $(function(){
 
 </head>
 <body>
+	
+	
 	<div class="container">	
 		<div class="header">
 			<div id="logo"><img src="http://www.dmi.dk/dmi/dmi-logo.gif" alt="DMI"></div>
@@ -99,7 +103,7 @@ $(function(){
 		<div id="content" class="row">
 			<div class="border">
 				<div class="eight columns">
-					<h1 id="status"></h1>
+					
 					<h1>Vejrudsigten nær dig!</h1>
 					<div id="tabs">
 						<ul>
@@ -108,17 +112,10 @@ $(function(){
 							<div style="clear:both;"></div>
 						</ul>
 						<div id="tabs-1">
-							<img src="http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=<?php echo $maps->result->address_component[7]->long_name; ?>&mode=long">
+							<img id="3" src="" />
 						</div>
 						<div id="tabs-2">
-
-							<script type="text/javascript">
-							//	var dag3_9_base = '<img src="http://servlet.dmi.dk/byvejr/servlet/byvejr?by=';
-							//	var dag3_9_end = '&tabel=dag3_9"';
-							//	document.write(dag3_9_base + el.short_name + dag3_9_end);
-								
-							</script>
-							<img src="http://servlet.dmi.dk/byvejr/servlet/byvejr?by=1000&tabel=dag3_9">
+							<img id="3-9" src="" />
 						</div>			
 					</div>
 					<div class="description eight columns">
