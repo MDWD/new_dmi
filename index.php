@@ -20,6 +20,76 @@
 		$varsler = simplexml_load_file("http://www.dmi.dk/dmi/varsel.xml");
 		$maps = simplexml_load_file("http://maps.googleapis.com/maps/api/geocode/xml?latlng=55.675649,12.528508&sensor=false");							
 	 ?>
+
+
+<script type="text/javascript">
+$(function(){
+   var GETZIP = {
+      getLocation: function(){
+         $('#status').text('searching...');
+         if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(GETZIP.getZipCode, GETZIP.error, {timeout: 7000});//cache it for 10 minutes
+         }else{
+            GETZIP.error('Geo location not supported');
+         }
+      },
+      index: 0,
+      error: function(msg) {
+         if(msg.code){
+            //this is a geolocation error
+            switch(msg.code){
+            case 1:
+               $("#status").text('Permission Denied').fadeOut().fadeIn();
+               break;
+            case 2:
+               $("#status").text('Position Unavailable').fadeOut().fadeIn();
+               break;
+            case 3:
+               GETZIP.index++;
+               $("#status").text('Timeout... Trying again (' + GETZIP.index + ')').fadeOut().fadeIn();
+               navigator.geolocation.getCurrentPosition(GETZIP.getZipCode, GETZIP.error, {timeout: 7000});
+               break;
+            default:
+               //nothing
+            }
+         }else{
+            //this is a text error
+            $('#error').text(msg).addClass('failed');
+         }
+ 
+      },
+ 
+      getZipCode: function(position){
+         var position = position.coords.latitude + "," + position.coords.longitude;
+         $.getJSON('proxy.php',{
+            path : "http://maps.google.com/maps/api/geocode/json?latlng="+position+"&sensor=false",
+            type: "application/json"
+         }, function(json){
+            //Find the zip code of the first result
+            if(!(json.status == "OK")){
+               GETZIP.error('Zip Code not Found');
+               return;
+            }
+            var found = false;
+            $(json.results[0].address_components).each(function(i, el){
+               if($.inArray("postal_code", el.types) > -1){
+                  $("#status").text('Your Zip Code: ' + el.short_name);
+                  found = true;
+                  return;
+               }
+            });
+            if(!found){
+               GETZIP.error('Zip Code not Found');
+            }
+         });
+      }
+   }
+   GETZIP.getLocation();
+
+});
+
+</script>
+
 </head>
 <body>
 	<div class="container">	
@@ -29,6 +99,7 @@
 		<div id="content" class="row">
 			<div class="border">
 				<div class="eight columns">
+					<h1 id="status"></h1>
 					<h1>Vejrudsigten nær dig!</h1>
 					<div id="tabs">
 						<ul>
@@ -40,15 +111,23 @@
 							<img src="http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=<?php echo $maps->result->address_component[7]->long_name; ?>&mode=long">
 						</div>
 						<div id="tabs-2">
+
+							<script type="text/javascript">
+							//	var dag3_9_base = '<img src="http://servlet.dmi.dk/byvejr/servlet/byvejr?by=';
+							//	var dag3_9_end = '&tabel=dag3_9"';
+							//	document.write(dag3_9_base + el.short_name + dag3_9_end);
+								
+							</script>
 							<img src="http://servlet.dmi.dk/byvejr/servlet/byvejr?by=1000&tabel=dag3_9">
 						</div>			
 					</div>
 					<div class="description eight columns">
 						<div id="udsigt">
 							<h1><?php echo $xml->channel->title; ?></h1>
+						
+							<h2><?php echo $xml->channel->item->title; ?></h2>
+							<p style="height: 32px; overflow: hidden;"><?php echo $xml->channel->item->description; ?></p>
 						</div>
-						<h2><?php echo $xml->channel->item->title; ?></h2>
-						<p style="height: 32px; overflow: hidden;"><?php echo $xml->channel->item->description; ?></p>
 					</div>
 					<div class="three columns">
 						<form>
@@ -109,6 +188,7 @@
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
 	<script type="text/javascript">
 		if (navigator.geolocation) {
 	        	navigator.geolocation.getCurrentPosition(getInitialCoordinates);
@@ -143,10 +223,10 @@
 				
 			
 				alert(xmlresp.getElementsByTagName("result[0].address_component[7].long_name[0]"));
+=======
+>>>>>>> asdasd
 	
-			
-			}				
+		 
 
-	</script>
 </body>
 </html>
