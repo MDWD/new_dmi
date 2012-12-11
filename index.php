@@ -143,9 +143,9 @@ $(function(){
 							<img id="3-9" src="" />
 						</div>			
 					</div>
-					<div class="description eight columns">
+					<div class="description">
 						<div id="udsigt">
-							<h1><?php echo $xml->channel->title; ?></h1>
+							<h1>Seneste regionaludsigt</h1>
 						
 							<h2><?php echo $xml->channel->item->title; ?></h2>
 							<p style="height: 32px; overflow: hidden;"><?php echo $xml->channel->item->description; ?></p>
