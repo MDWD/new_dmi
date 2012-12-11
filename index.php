@@ -157,20 +157,20 @@ $(function(){
 					</div>
 					<div id="links" style="clear: both;">
 						<ul class="six columns">
-							<li><a href="#"><img src="images/vejrkort.png">Verdenskort</a></li>
-							<li><a href="#"><img src="images/Verden.png">Verdensvejr</a></li>
-							<li><a href="#"><img src="images/Til-lands.png">Til Lands</a></li>
-							<li><a href="#"><img src="images/til-sos.png">Til Søs</a></li>
-							<li><a href="#"><img src="images/i-luften.png">I Luften</a></li>
-							<li><a href="#"><img src="images/sundhedsvejr.png">Sundhedsvejr</a></li>
+							<li><a href="#"><img src="images/icons/vejrkort.png">Vejrkort</a></li>
+							<li><a href="#"><img src="images/icons/verdensvejr.png">Verdensvejr</a></li>
+							<li><a href="#"><img src="images/icons/til_lands.png">Til Lands</a></li>
+							<li><a href="#"><img src="images/icons/til_vands.png">Til Søs</a></li>
+							<li><a href="#"><img src="images/icons/i_luften.png">I Luften</a></li>
+							<li><a href="#"><img src="images/icons/sundhedsvejr.png">Sundhedsvejr</a></li>
 						</ul>
 						<ul class="six columns">
-							<li><a href="#"><img src="images/Tjenester.png">Tjenester</a></li>
-							<li><a href="#"><img src="images/malinger.png">Målinger</a></li>
-							<li><a href="#"><img src="images/viden.png">Viden</a></li>
-							<li><a href="#"><img src="images/klima.png">Klima</a></li>
-							<li><a href="#"><img src="images/Vejrarkiver.png">Arkiver</a></li>
-							<li><a href="#"><img src="images/om-DMI.png">Om DMI</a></li>
+							<li><a href="#"><img src="images/icons/Tjenester.png">Tjenester</a></li>
+							<li><a href="#"><img src="images/icons/malinger.png">Målinger</a></li>
+							<li><a href="#"><img src="images/icons/viden.png">Viden</a></li>
+							<li><a href="#"><img src="images/icons/klima.png">Klima</a></li>
+							<li><a href="#"><img src="images/icons/Vejrarkiver.png">Arkiver</a></li>
+							<li><a href="#"><img src="images/icons/om-DMI.png">Om DMI</a></li>
 						</ul>
 					</div>
 				</div>
